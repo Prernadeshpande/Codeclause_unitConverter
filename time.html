@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Time Converter</title>
+  <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+  <style>body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .converter {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  
+  label, select, input {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  
+  #result {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  </style>
+  <script>function convert() {
+    const input = document.getElementById("input").value;
+    const from = document.getElementById("from").value;
+    const to = document.getElementById("to").value;
+    
+    let result;
+    
+    if (from === "sec" && to === "min") {
+      result = input / 60;
+    } else if (from === "sec" && to === "hr") {
+      result = input / 3600;
+    } else if (from === "sec" && to === "day") {
+      result = input / 86400;
+    } else if (from === "min" && to === "sec") {
+      result = input * 60;
+    } else if (from === "min" && to === "hr") {
+      result = input / 60;
+    } else if (from === "min" && to === "day") {
+      result = input / 1440;
+    } else if (from === "hr" && to === "sec") {
+      result = input * 3600;
+    } else if (from === "hr" && to === "min") {
+      result = input * 60;
+    } else if (from === "hr" && to === "day") {
+      result = input / 24;
+    } else if (from === "day" && to === "sec") {
+      result = input * 86400;
+    } else if (from === "day" && to === "min") {
+      result = input * 1440;
+    } else if (from === "day" && to === "hr") {
+      result = input * 24;
+    } else {
+      result = input;
+    }
+    
+    document.getElementById("result").innerHTML = result.toFixed(2);
+  }
+  </script>
+</head>
+<body>
+  <h1>Time Converter</h1>
+  
+  <div class="converter">
+    <label for="input">Input:</label>
+    <input type="number" id="input">
+    
+    <label for="from">From:</label>
+    <select id="from">
+      <option value="sec">Seconds (s)</option>
+      <option value="min">Minutes (min)</option>
+      <option value="hr">Hours (hr)</option>
+      <option value="day">Days (day)</option>
+    </select>
+    
+    <label for="to">To:</label>
+    <select id="to">
+      <option value="sec">Seconds (s)</option>
+      <option value="min">Minutes (min)</option>
+      <option value="hr">Hours (hr)</option>
+      <option value="day">Days (day)</option>
+    </select>
+    
+    <button onclick="convert()">Convert</button>
+    
+    <p id="result"></p>
+  </div>
+  
+  <!-- <script src="script.js"></script> -->
+</body>
+</html>

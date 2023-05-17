@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weight Converter</title>
+  <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+  <style>body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .converter {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  
+  label, select, input {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  
+  #result {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  </style>
+  <script>function convert() {
+    const input = document.getElementById("input").value;
+    const from = document.getElementById("from").value;
+    const to = document.getElementById("to").value;
+    
+    let result;
+    
+    if (from === "kg" && to === "lb") {
+      result = input * 2.20462;
+    } else if (from === "lb" && to === "kg") {
+      result = input / 2.20462;
+    } else if (from === "kg" && to === "oz") {
+      result = input * 35.274;
+    } else if (from === "oz" && to === "kg") {
+      result = input / 35.274;
+    } else if (from === "kg" && to === "g") {
+      result = input * 1000;
+    } else if (from === "g" && to === "kg") {
+      result = input / 1000;
+    } else if (from === "kg" && to === "mg") {
+      result = input * 1000000;
+    } else if (from === "mg" && to === "kg") {
+      result = input / 1000000;
+    } else {
+      result = input;
+    }
+    
+    document.getElementById("result").innerHTML = result.toFixed(2);
+  }
+  </script>
+</head>
+<body>
+  <h1>Weight Converter</h1>
+  
+  <div class="converter">
+    <label for="input">Input:</label>
+    <input type="number" id="input">
+    
+    <label for="from">From:</label>
+    <select id="from">
+      <option value="kg">Kilogram (kg)</option>
+      <option value="lb">Pound (lb)</option>
+      <option value="oz">Ounce (oz)</option>
+      <option value="g">Gram (g)</option>
+      <option value="mg">Milligram (mg)</option>
+    </select>
+    
+    <label for="to">To:</label>
+    <select id="to">
+      <option value="kg">Kilogram (kg)</option>
+      <option value="lb">Pound (lb)</option>
+      <option value="oz">Ounce (oz)</option>
+      <option value="g">Gram (g)</option>
+      <option value="mg">Milligram (mg)</option>
+    </select>
+    
+    <button onclick="convert()">Convert</button>
+    
+    <p id="result"></p>
+  </div>
+  
+  <!-- <script src="script.js"></script> -->
+</body>
+</html>

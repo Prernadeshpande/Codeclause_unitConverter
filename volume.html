@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Volume Converter</title>
+  <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+  <style>body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .converter {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  
+  label, select, input {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  
+  #result {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  </style>
+<script>
+    function convert() {
+  const input = document.getElementById("input").value;
+  const from = document.getElementById("from").value;
+  const to = document.getElementById("to").value;
+  
+  let result;
+  
+  if (from === "cu_m" && to === "cu_ft") {
+    result = input * 35.3147;
+  } else if (from === "cu_ft" && to === "cu_m") {
+    result = input / 35.3147;
+  } else if (from === "cu_m" && to === "cu_in") {
+    result = input * 61023.7;
+  } else if (from === "cu_in" && to === "cu_m") {
+    result = input / 61023.7;
+  } else if (from === "cu_m" && to === "cu_yd") {
+    result = input * 1.30795;
+  } else if (from === "cu_yd" && to === "cu_m") {
+    result = input / 1.30795;
+  } else if (from === "litre" && to === "gallon") {
+    result = input * 0.264172;
+  } else if (from === "gallon" && to === "litre") {
+    result = input / 0.264172;
+  } else {
+    result = input;
+  }
+  
+  document.getElementById("result").innerHTML = result.toFixed(2);
+}
+
+</script>
+</head>
+<body>
+  <h1>Volume Converter</h1>
+  
+  <div class="converter">
+    <label for="input">Input:</label>
+    <input type="number" id="input">
+    
+    <label for="from">From:</label>
+    <select id="from">
+      <option value="cu_m">Cubic meter (m³)</option>
+      <option value="cu_ft">Cubic feet (ft³)</option>
+      <option value="cu_in">Cubic inch (in³)</option>
+      <option value="cu_yd">Cubic yard (yd³)</option>
+      <option value="litre">Litre (L)</option>
+      <option value="gallon">Gallon (gal)</option>
+    </select>
+    
+    <label for="to">To:</label>
+    <select id="to">
+      <option value="cu_m">Cubic meter (m³)</option>
+      <option value="cu_ft">Cubic feet (ft³)</option>
+      <option value="cu_in">Cubic inch (in³)</option>
+      <option value="cu_yd">Cubic yard (yd³)</option>
+      <option value="litre">Litre (L)</option>
+      <option value="gallon">Gallon (gal)</option>
+    </select>
+    
+    <button onclick="convert()">Convert</button>
+    
+    <p id="result"></p>
+  </div>
+  
+  <!-- <script src="script.js"></script> -->
+</body>
+</html>

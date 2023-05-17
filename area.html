@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Area Converter</title>
+  <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+  <style>body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .converter {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  
+  label, select, input {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  
+  #result {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  </style>
+  <script>function convert() {
+    const input = document.getElementById("input").value;
+    const from = document.getElementById("from").value;
+    const to = document.getElementById("to").value;
+    
+    let result;
+    
+    if (from === "sqm" && to === "sqft") {
+      result = input * 10.76391041671;
+    } else if (from === "sqft" && to === "sqm") {
+      result = input / 10.76391041671;
+    } else if (from === "sqm" && to === "sqin") {
+      result = input * 1550.0031000062;
+    } else if (from === "sqin" && to === "sqm") {
+      result = input / 1550.0031000062;
+    } else if (from === "sqm" && to === "acre") {
+      result = input * 0.00024710538146717;
+    } else if (from === "acre" && to === "sqm") {
+      result = input / 0.00024710538146717;
+    } else if (from === "sqm" && to === "hectare") {
+      result = input * 0.0001;
+    } else if (from === "hectare" && to === "sqm") {
+      result = input / 0.0001;
+    } else {
+      result = input;
+    }
+    
+    document.getElementById("result").innerHTML = result.toFixed(2);
+  }
+  </script>
+</head>
+<body>
+  <h1>Area Converter</h1>
+  
+  <div class="converter">
+    <label for="input">Input:</label>
+    <input type="number" id="input">
+    
+    <label for="from">From:</label>
+    <select id="from">
+      <option value="sqm">Square meter (m&#178;)</option>
+      <option value="sqft">Square feet (ft&#178;)</option>
+      <option value="sqin">Square inch (in&#178;)</option>
+      <option value="acre">Acre (ac)</option>
+      <option value="hectare">Hectare (ha)</option>
+    </select>
+    
+    <label for="to">To:</label>
+    <select id="to">
+      <option value="sqm">Square meter (m&#178;)</option>
+      <option value="sqft">Square feet (ft&#178;)</option>
+      <option value="sqin">Square inch (in&#178;)</option>
+      <option value="acre">Acre (ac)</option>
+      <option value="hectare">Hectare (ha)</option>
+    </select>
+    
+    <button onclick="convert()">Convert</button>
+    
+    <p id="result"></p>
+  </div>
+  
+  <!-- <script src="script.js"></script> -->
+</body>
+</html>

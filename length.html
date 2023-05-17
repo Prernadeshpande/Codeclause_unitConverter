@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Length Converter</title>
+  <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.converter {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+label, select, input {
+  display: block;
+  margin-bottom: 10px;
+}
+
+button {
+  margin-top: 10px;
+}
+
+#result {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+  </style>
+  <script>
+    function convert() {
+  const input = document.getElementById("input").value;
+  const from = document.getElementById("from").value;
+  const to = document.getElementById("to").value;
+  
+  let result;
+  
+  if (from === "m" && to === "km") {
+    result = input / 1000;
+  } else if (from === "km" && to === "m") {
+    result = input * 1000;
+  } else if (from === "mi" && to === "km") {
+    result = input * 1.60934;
+  } else if (from === "km" && to === "mi") {
+    result = input / 1.60934;
+  } else if (from === "mi" && to === "m") {
+    result = input * 1609.34;
+  } else if (from === "m" && to === "mi") {
+    result = input / 1609.34;
+  } else {
+    result = input;
+  }
+  
+  document.getElementById("result").innerHTML = result;
+}
+
+  </script>
+</head>
+<body>
+  <h1>Length Converter</h1>
+  
+  <div class="converter">
+    <label for="input">Input:</label>
+    <input type="number" id="input">
+    
+    <label for="from">From:</label>
+    <select id="from">
+      <option value="m">Meter</option>
+      <option value="km">Kilometer</option>
+      <option value="mi">Mile</option>
+    </select>
+    
+    <label for="to">To:</label>
+    <select id="to">
+      <option value="m">Meter</option>
+      <option value="km">Kilometer</option>
+      <option value="mi">Mile</option>
+    </select>
+    
+    <button onclick="convert()">Convert</button>
+    
+    <p id="result"></p>
+  </div>
+  
+  <!-- <script src="script.js"></script> -->
+</body>
+</html>
